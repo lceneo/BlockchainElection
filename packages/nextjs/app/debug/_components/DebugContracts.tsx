@@ -10,6 +10,7 @@ import { useAllContracts } from "~~/utils/scaffold-eth/contractsData";
 const selectedContractStorageKey = "scaffoldEth2.selectedContract";
 
 export function DebugContracts() {
+
   const contractsData = useAllContracts();
   const contractNames = useMemo(() => Object.keys(contractsData) as ContractName[], [contractsData]);
 
