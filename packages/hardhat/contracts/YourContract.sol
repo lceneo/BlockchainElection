@@ -9,16 +9,21 @@ contract YourContract {
        bool voted;
        address delegate;
        uint vote;
+       bool isParticipatingInVote;
    }
    struct Proposal {
        uint id;
        bytes32 name;
        uint voteCount;
    }
+
    address public chairperson;
    mapping(address => Voter) public voters;
    Proposal[] private proposals;
-   bool voteEnded = false;
+   bool public voteEnded = false;
+
+   uint256 public constant VOTE_DURATION = 1 minutes;
+   uint256 public creationTimestamp;
 
    constructor(bytes32[] memory proposalNames) {
        chairperson = msg.sender;
@@ -30,13 +35,24 @@ contract YourContract {
                voteCount: 0
            }));
        }
+      creationTimestamp = block.timestamp;
    }
 
-   function getProposals() public view returns (Proposal[] memory){
+
+    function checkCurrentTime() private  {
+        if (voteEnded) { return; }
+        else if (block.timestamp >= creationTimestamp + VOTE_DURATION) {
+            endVoting();
+        }
+    }
+
+   function getProposals() public returns (Proposal[] memory){
+        checkCurrentTime();
         return proposals;
    }
 
    function giveRightToVote(address voter) external {
+       checkCurrentTime();
        require(!voteEnded, "Vote is already ended");
        require(
            msg.sender == chairperson,
@@ -51,6 +67,7 @@ contract YourContract {
    }
 
    function delegate(address to) external {
+       checkCurrentTime();
        require(!voteEnded, "Vote is already ended");
        Voter storage sender = voters[msg.sender];
        require(sender.weight != 0, "You have no right to vote");
@@ -75,6 +92,7 @@ contract YourContract {
    }
 
    function revokeDelegation() external  {
+        checkCurrentTime();
         require(!voteEnded, "Vote is already ended");
         Voter storage sender = voters[msg.sender];
         require(sender.delegate != address(0), "You haven't delegated your vote");
@@ -91,15 +109,19 @@ contract YourContract {
         sender.delegate = address(0);
    }
 
-   function endVoting() external  {
+   function endVoting() private  {
         require(!voteEnded, "Vote is already ended");
         voteEnded = true;
    }
 
    function vote(uint proposalId) external {
-        voters[msg.sender].weight = 1; //исправить
+       checkCurrentTime();
        require(!voteEnded, "Vote is already ended");
        Voter storage sender = voters[msg.sender];
+       if (!sender.isParticipatingInVote) {
+        sender.weight = 1;
+        sender.isParticipatingInVote = true;
+       }
        require(sender.weight != 0, "Has no right to vote");
        require(!sender.voted, "Already voted.");
        int index = searchIndex(proposalId);
@@ -111,7 +133,8 @@ contract YourContract {
 
 
 
-   function winningProposal() public view returns (uint winningProposal_){
+   function winningProposal() public returns (uint winningProposal_){
+       checkCurrentTime();
        uint winningVoteCount = 0;
        for (uint p = 0; p < proposals.length; p++) {
            if (proposals[p].voteCount > winningVoteCount) {
@@ -121,7 +144,8 @@ contract YourContract {
        }
    }
 
-   function winnerName() external view returns (bytes32 winnerName_){
+   function winnerName() external returns (bytes32 winnerName_){
+       checkCurrentTime();
        winnerName_ = proposals[winningProposal()].name;
    }
 

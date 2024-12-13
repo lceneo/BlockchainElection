@@ -22,12 +22,38 @@ const deployedContracts = {
         },
         {
           inputs: [],
+          name: "VOTE_DURATION",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
           name: "chairperson",
           outputs: [
             {
               internalType: "address",
               name: "",
               type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "creationTimestamp",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
             },
           ],
           stateMutability: "view",
@@ -42,13 +68,6 @@ const deployedContracts = {
             },
           ],
           name: "delegate",
-          outputs: [],
-          stateMutability: "nonpayable",
-          type: "function",
-        },
-        {
-          inputs: [],
-          name: "endVoting",
           outputs: [],
           stateMutability: "nonpayable",
           type: "function",
@@ -80,7 +99,7 @@ const deployedContracts = {
               type: "tuple[]",
             },
           ],
-          stateMutability: "view",
+          stateMutability: "nonpayable",
           type: "function",
         },
         {
@@ -136,6 +155,19 @@ const deployedContracts = {
           type: "function",
         },
         {
+          inputs: [],
+          name: "voteEnded",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
           inputs: [
             {
               internalType: "address",
@@ -165,6 +197,11 @@ const deployedContracts = {
               name: "vote",
               type: "uint256",
             },
+            {
+              internalType: "bool",
+              name: "isParticipatingInVote",
+              type: "bool",
+            },
           ],
           stateMutability: "view",
           type: "function",
@@ -179,7 +216,7 @@ const deployedContracts = {
               type: "bytes32",
             },
           ],
-          stateMutability: "view",
+          stateMutability: "nonpayable",
           type: "function",
         },
         {
@@ -192,7 +229,7 @@ const deployedContracts = {
               type: "uint256",
             },
           ],
-          stateMutability: "view",
+          stateMutability: "nonpayable",
           type: "function",
         },
       ],

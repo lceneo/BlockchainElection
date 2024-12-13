@@ -31,7 +31,7 @@ export function ResultsPie({ candidates }: ResultsPieComponentProps) {
                 enabled: true
             },
             sectorLabel: {
-                fontWeight : 'bold'
+                fontWeight : 'bold',
             },
             calloutLabel: {
                 fontWeight: 'bold',

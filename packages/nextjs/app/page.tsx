@@ -4,7 +4,11 @@ import type { NextPage } from "next";
 import Voting from "~~/app/components/Voting";
 
 const Home: NextPage = () => {
-  return <Voting />;
+  return (
+      <div className="pt-4">
+        <Voting/>
+      </div>
+  );
 };
 
 export default Home;
