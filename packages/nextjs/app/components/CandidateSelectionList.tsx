@@ -13,8 +13,7 @@ export default function CandidateSelectionList({ candidates }: CandidateSelectio
             functionName: "voters",
             args: [connectedAddress],
         });
-    const [voteWeightContract, hasVoted, delegateAddress, votedForCandidateIdContract] = data ?? [];
-    const voteWeight = voteWeightContract !== undefined ? Number(voteWeightContract) : undefined;
+    const [voteWeightContract, hasVoted, votedForCandidateIdContract] = data ?? [];
     const votedForCandidateId = votedForCandidateIdContract !== undefined ? Number(votedForCandidateIdContract) : undefined;
 
     const [selectedCandidate, setSelectedCandidate] = useState(0);

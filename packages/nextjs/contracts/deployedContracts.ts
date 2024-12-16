@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   31337: {
     YourContract: {
-      address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      address: "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
       abi: [
         {
           inputs: [
@@ -60,19 +60,6 @@ const deployedContracts = {
           type: "function",
         },
         {
-          inputs: [
-            {
-              internalType: "address",
-              name: "to",
-              type: "address",
-            },
-          ],
-          name: "delegate",
-          outputs: [],
-          stateMutability: "nonpayable",
-          type: "function",
-        },
-        {
           inputs: [],
           name: "getProposals",
           outputs: [
@@ -99,26 +86,6 @@ const deployedContracts = {
               type: "tuple[]",
             },
           ],
-          stateMutability: "nonpayable",
-          type: "function",
-        },
-        {
-          inputs: [
-            {
-              internalType: "address",
-              name: "voter",
-              type: "address",
-            },
-          ],
-          name: "giveRightToVote",
-          outputs: [],
-          stateMutability: "nonpayable",
-          type: "function",
-        },
-        {
-          inputs: [],
-          name: "revokeDelegation",
-          outputs: [],
           stateMutability: "nonpayable",
           type: "function",
         },
@@ -188,11 +155,6 @@ const deployedContracts = {
               type: "bool",
             },
             {
-              internalType: "address",
-              name: "delegate",
-              type: "address",
-            },
-            {
               internalType: "uint256",
               name: "vote",
               type: "uint256",
@@ -204,32 +166,6 @@ const deployedContracts = {
             },
           ],
           stateMutability: "view",
-          type: "function",
-        },
-        {
-          inputs: [],
-          name: "winnerName",
-          outputs: [
-            {
-              internalType: "bytes32",
-              name: "winnerName_",
-              type: "bytes32",
-            },
-          ],
-          stateMutability: "nonpayable",
-          type: "function",
-        },
-        {
-          inputs: [],
-          name: "winningProposal",
-          outputs: [
-            {
-              internalType: "uint256",
-              name: "winningProposal_",
-              type: "uint256",
-            },
-          ],
-          stateMutability: "nonpayable",
           type: "function",
         },
       ],
