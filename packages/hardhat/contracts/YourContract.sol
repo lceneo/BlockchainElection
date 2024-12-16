@@ -21,7 +21,7 @@ contract YourContract {
    Proposal[] private proposals;
    bool public voteEnded = false;
 
-   uint256 public constant VOTE_DURATION = 24 hours;
+   uint256 public constant VOTE_DURATION = 1 minutes;
    uint256 public creationTimestamp;
 
    constructor(bytes32[] memory proposalNames) {
@@ -45,8 +45,13 @@ contract YourContract {
         }
     }
 
-   function getProposals() public returns (Proposal[] memory){
-        checkCurrentTime();
+    function getProposal(uint proposalId) public view returns (Proposal memory) {
+       int index = searchIndex(proposalId);
+       require(index != -1, "Candidate not found");
+       return proposals[uint(index)];
+   }
+
+   function getProposals() public view returns (Proposal[] memory){
         return proposals;
    }
 
@@ -71,6 +76,22 @@ contract YourContract {
        sender.vote = proposalId;
        proposals[uint(index)].voteCount += sender.weight;
    }
+
+      function winningProposal() public view returns (uint winningProposal_){
+       uint winningVoteCount = 0;
+       for (uint p = 0; p < proposals.length; p++) {
+           if (proposals[p].voteCount > winningVoteCount) {
+               winningVoteCount = proposals[p].voteCount;
+               winningProposal_ = p;
+           }
+       }
+       return winningProposal_;
+   }
+
+   function winnerName() external view returns (bytes32 winnerName_){
+       winnerName_ = proposals[winningProposal()].name;
+   }
+
 
    function searchIndex(uint _id) public view returns (int) {
        for (uint i = 0; i < proposals.length; i++) {
