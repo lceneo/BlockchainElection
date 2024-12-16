@@ -21,7 +21,7 @@ contract YourContract {
    Proposal[] private proposals;
    bool public voteEnded = false;
 
-   uint256 public constant VOTE_DURATION = 1 minutes;
+   uint256 public constant VOTE_DURATION = 24 hours;
    uint256 public creationTimestamp;
 
    constructor(bytes32[] memory proposalNames) {
