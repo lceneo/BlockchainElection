@@ -5,8 +5,6 @@ import { beforeEach } from "mocha";
 import { time } from "@nomicfoundation/hardhat-network-helpers";
 
 describe("YourContract", function () {
-  // We define a fixture to reuse the same setup in every test.
-
   const candidateNames = ["first", "second"];
 
   let yourContract: YourContract;
@@ -57,12 +55,6 @@ describe("YourContract", function () {
       await yourContract.vote(proposalIdToVoteFor);
       const voteCall2 = yourContract.vote(proposalIdToVoteFor);
       await expect(voteCall2).to.be.revertedWith("Already voted.");
-    });
-
-    it("Should drop error when trying to vote for non-existing proposal", async function () {
-      const proposalIdToVoteFor = 62323;
-      const voteCall = yourContract.vote(proposalIdToVoteFor);
-      await expect(voteCall).to.be.revertedWith("Candidate not found");
     });
 
     it("Should drop error when trying to vote for non-existing proposal", async function () {
