@@ -2091,7 +2091,8 @@ __metadata:
     "@uniswap/sdk-core": ^5.8.2
     "@uniswap/v2-sdk": ^4.6.1
     abitype: 1.0.6
-    ag-charts-react: ^11.0.0
+    ag-charts-community: ^11.0.3
+    ag-charts-react: ^11.0.3
     autoprefixer: ^10.4.20
     blo: ^1.2.0
     burner-connector: ^0.0.8
@@ -3762,13 +3763,37 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ag-charts-react@npm:^11.0.0":
-  version: 11.0.0
-  resolution: "ag-charts-react@npm:11.0.0"
+"ag-charts-community@npm:^11.0.3":
+  version: 11.0.3
+  resolution: "ag-charts-community@npm:11.0.3"
+  dependencies:
+    ag-charts-locale: 11.0.3
+    ag-charts-types: 11.0.3
+  checksum: 0c5dba32ab9aae3d3a75c9651772bf8483341a1d3a8fff067e8e03d2a2775ddabe6de8931ebd0902d82b4d142ad23902e72b3bb5244f5059c3269a1c5955732a
+  languageName: node
+  linkType: hard
+
+"ag-charts-locale@npm:11.0.3":
+  version: 11.0.3
+  resolution: "ag-charts-locale@npm:11.0.3"
+  checksum: 91493c18dce5ea8a4d02f0df94d3eb2d267e2b5d462353498e3fc53657f9532e1468e2ad917d9636920231f2584d1701a701e4a0fd89f258e496b0e3fb39752e
+  languageName: node
+  linkType: hard
+
+"ag-charts-react@npm:^11.0.3":
+  version: 11.0.3
+  resolution: "ag-charts-react@npm:11.0.3"
   peerDependencies:
-    ag-charts-community: 11.0.0
+    ag-charts-community: 11.0.3
     react: ^18.0.0 || ^19.0.0
-  checksum: 1a8adfbc41df89e226dfe54f991697401c187789447dae78b84ca108a143d3c7140842aaecead6e278c7d0b1c53154c86e070266b3eac5c8fd622f91f414367b
+  checksum: ff658e2e7fedd27d7ff94ceb0e53efde6b2cf1ffa02f815ad8c866a2c9444a7e15e4b5b90b6c7999cc071edb7c4ea391b4fad1406ac49ae740d33903f1200034
+  languageName: node
+  linkType: hard
+
+"ag-charts-types@npm:11.0.3":
+  version: 11.0.3
+  resolution: "ag-charts-types@npm:11.0.3"
+  checksum: 74a2ef675a5435f369fd35c251df1e6c75b4e71fc127c5d48021f8306f079b2e1662c547f746f702240c87c790c68c29c5ed61e9eb31f87b7d678082b0823994
   languageName: node
   linkType: hard
 
